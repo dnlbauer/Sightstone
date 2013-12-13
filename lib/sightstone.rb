@@ -5,10 +5,11 @@ require 'sightstone/modules/summoner_module'
 require 'sightstone/modules/game_module'
 require 'sightstone/modules/league_module'
 require 'sightstone/modules/stats_module'
+require 'sightstone/modules/team_module'
 
 class Sightstone
   attr_accessor :region, :api_key
-  attr_accessor :summoner, :champion, :game, :league, :stats
+  attr_accessor :summoner, :champion, :game, :league, :stats, :team
   
   def initialize(api_key, region)
     @api_key = api_key
@@ -19,6 +20,7 @@ class Sightstone
     @game = GameModule.new(self)
     @league = LeagueModule.new(self)
     @stats = StatsModule.new(self)
+    @team = TeamModule.new(self)
   end
 end
 
