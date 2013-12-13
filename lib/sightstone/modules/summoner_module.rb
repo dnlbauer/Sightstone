@@ -2,15 +2,18 @@ require 'sightstone/summoner'
 require 'sightstone/masterybook'
 require 'sightstone/runebook'
 
-
 class SummonerModule
-  
   def initialize(sightstone)
     @sightstone = sightstone
   end
-  
-  def get_summoner_by_name(name)
-    uri = "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/by-name/#{name}"
+
+  def summoner(name_or_id)
+    uri = if name_or_id.is_a? Integer
+      "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{name_or_id}"
+    else
+      "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/by-name/#{name_or_id}"
+    end
+    
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
@@ -18,16 +21,8 @@ class SummonerModule
     }
   end
 
-  def get_summoner_by_id(id)
-    uri = "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{id}"
-    response = _get_api_response(uri)
-    _parse_response(response) { |resp|
-      data = JSON.parse(resp)
-      return Summoner.new(data)
-    }
-  end
 
-  def get_summoners_names(ids)
+  def names(ids)
     ids = ids.join(',')
     uri = "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{ids}/name"
     response = _get_api_response(uri)
@@ -37,8 +32,13 @@ class SummonerModule
     }
   end
 
-  def get_runes_for_summoner(summoner)
-    uri = "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{summoner.id}/runes"
+  def runes(summoner)
+    id = if summoner.is_a? Summoner
+      summoner.id
+    else
+      summoner
+    end
+    uri = "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{id}/runes"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
@@ -46,16 +46,22 @@ class SummonerModule
     }
   end
 
-  def get_masteries_for_summoner(summoner)
-    uri = "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{summoner.id}/masteries"
+  def masteries(summoner)
+     id = if summoner.is_a? Summoner
+      summoner.id
+    else
+      summoner
+    end
+    uri = "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{id}/masteries"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
       return MasteryBook.new(data)
     }
   end
-  
+
   private
+
   def _get_api_response(uri)
     params = {'api_key' => @sightstone.api_key}
     RestClient.get(uri, headers={:params => params}) {|response, request, result| response }

@@ -2,10 +2,11 @@ require 'rest_client'
 require 'JSON'
 require 'sightstone/modules/champion_module'
 require 'sightstone/modules/summoner_module'
+require 'sightstone/modules/game_module'
 
 class Sightstone
   attr_accessor :region, :api_key
-  attr_accessor :summoner, :champion
+  attr_accessor :summoner, :champion, :game
   
   def initialize(api_key, region)
     @api_key = api_key
@@ -13,6 +14,7 @@ class Sightstone
     
     @summoner = SummonerModule.new(self)
     @champion = ChampionModule.new(self)
+    @game = GameModule.new(self)
   end
 end
 
