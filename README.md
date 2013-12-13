@@ -18,7 +18,7 @@ Usage Examples
 Sightstone is divided into several modules, each controlled by the base class 'Sightstone'. To use it, simply `require 'sightstone'`
 
 Currently available modules are:
-  summoner (summoner, runes, masteries), game, league, stats, champion
+  summoner (summoner, runes, masteries), game, league, stats, champion, teams
   
 Below are usage examples for 2 of the modules. You can review the code to get an idea about what is currently possible and what isnt. Especially the module classes under `sightstone/modules` should be interessting for that. Working on a wiki begins as soon as i bring myself to comment my code properly.
 
@@ -84,7 +84,6 @@ game.statistics[1].value
 
 TODO
 -------
-- Teams
 - Non-api calls to the datadragon
 
 License
