@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
   s.email = 'danijob88@googlemail.com'
   s.files = Dir["lib/**/*"]
   s.homepage = 'http://rubygems.org/gems/outrage'
-  s.license = 'GPLv2'
+  s.license = 'MIT'
 end
