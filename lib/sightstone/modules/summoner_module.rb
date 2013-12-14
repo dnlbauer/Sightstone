@@ -2,6 +2,7 @@ require 'sightstone/modules/sightstone_base_module'
 require 'sightstone/summoner'
 require 'sightstone/masterybook'
 require 'sightstone/runebook'
+require 'open-uri'
 
 class SummonerModule < SightstoneBaseModule
   def initialize(sightstone)
@@ -12,7 +13,7 @@ class SummonerModule < SightstoneBaseModule
     uri = if name_or_id.is_a? Integer
       "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{name_or_id}"
     else
-      "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/by-name/#{name_or_id}"
+      "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/by-name/#{URI::encode(name_or_id)}"
     end
     
     response = _get_api_response(uri)
