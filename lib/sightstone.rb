@@ -30,3 +30,5 @@ class SightstoneApiException < Exception; end
 class SummonerNotFoundException < SightstoneApiException; end
 
 class SightstoneConnectionException < SightstoneApiException; end
+
+class RateLimitExceededException < SightstoneApiException; end
