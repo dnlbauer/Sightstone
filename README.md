@@ -6,7 +6,12 @@ Sightstone is a ruby wrapper for riots league of legends developer api ([http://
 
 Installation
 -------
-Clone this rep, build the gem and install it:
+Just download the gem:
+```
+gem install sightstone
+```
+
+If you want to build it by your on, build the gem and install it:
 ```
 cd Sightstone
 gem build sightstone.gemspec
