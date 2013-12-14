@@ -10,9 +10,9 @@ class SummonerModule < SightstoneBaseModule
 
   def summoner(name_or_id)
     uri = if name_or_id.is_a? Integer
-      "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{name_or_id}"
+      "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/#{name_or_id}"
     else
-      "http://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/by-name/#{name_or_id}"
+      "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/summoner/by-name/#{name_or_id}"
     end
     
     response = _get_api_response(uri)
