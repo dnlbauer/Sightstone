@@ -9,4 +9,6 @@ Gem::Specification.new do |s|
   s.files = Dir["lib/**/*"]
   s.homepage = 'http://rubygems.org/gems/outrage'
   s.license = 'MIT'
+  s.add_runtime_dependency 'rest-client'
+  s.add_runtime_dependency 'json'
 end
