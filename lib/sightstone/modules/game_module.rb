@@ -8,13 +8,14 @@ class GameModule < SightstoneBaseModule
     @sightstone = sightstone
   end
   
-  def recent(summoner)
+  def recent(summoner, optional={})
+    region = optional[:region] || @sightstone.region
    id = if summoner.is_a? Summoner
      summoner.id
    else
      summoner
    end
-   uri = "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/game/by-summoner/#{id}/recent"
+   uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.1/game/by-summoner/#{id}/recent"
    
     response = _get_api_response(uri)
     _parse_response(response) { |resp|

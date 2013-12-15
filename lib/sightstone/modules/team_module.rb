@@ -7,14 +7,15 @@ class TeamModule < SightstoneBaseModule
     @sightstone = sightstone
   end
 
-  def teams(summoner)
+  def teams(summoner, optional={})
+    region = optional[:region] || @sightstone.region
     id = if summoner.is_a? Summoner
       summoner.id
     else
       summoner
     end
     
-    uri = "https://prod.api.pvp.net/api/#{@sightstone.region}/v2.1/team/by-summoner/#{id}"
+    uri = "https://prod.api.pvp.net/api/#{region}/v2.1/team/by-summoner/#{id}"
 
     response = _get_api_response(uri)
     _parse_response(response) { |resp|

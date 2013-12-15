@@ -7,8 +7,10 @@ class ChampionModule < SightstoneBaseModule
     @sightstone = sightstone
   end
 
-  def champions(free_to_play=false)
-    uri = "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/champion"
+  def champions(, optional={})
+    region = optional[:region] || @sightstone.region
+    free_to_play = optional[:free_to_play]
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.1/champion"
     response = _get_api_response(uri, {'freeToPlay' => free_to_play})
   puts response
 

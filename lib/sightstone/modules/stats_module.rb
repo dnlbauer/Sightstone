@@ -8,13 +8,16 @@ class StatsModule < SightstoneBaseModule
     @sightstone = sightstone
   end
 
-  def summary(summoner, season=nil)
+  def summary(summoner, , optional={})
+    region = optional[:region] || @sightstone.region)
+    season = optional[:season]
+    
     id = if summoner.is_a? Summoner
     summoner.id
     else
     summoner
     end
-    uri = "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/stats/by-summoner/#{id}/summary"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.1/stats/by-summoner/#{id}/summary"
     response = if season.nil?
       _get_api_response(uri)
     else
@@ -28,13 +31,15 @@ class StatsModule < SightstoneBaseModule
 
   end
   
-  def ranked(summoner, season=nil)
+  def ranked(summoner, optional={})
+    region = optional[:region] || @sightstone.region
+    season = optional[:season]
     id = if summoner.is_a? Summoner
     summoner.id
     else
     summoner
     end
-    uri = "https://prod.api.pvp.net/api/lol/#{@sightstone.region}/v1.1/stats/by-summoner/#{id}/ranked"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.1/stats/by-summoner/#{id}/ranked"
     response = if season.nil?
       _get_api_response(uri)
     else

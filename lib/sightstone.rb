@@ -11,7 +11,7 @@ class Sightstone
   attr_accessor :region, :api_key
   attr_accessor :summoner, :champion, :game, :league, :stats, :team
   
-  def initialize(api_key, region)
+  def initialize(api_key, region='euw')
     @api_key = api_key
     @region = region
     
