@@ -7,7 +7,7 @@ class ChampionModule < SightstoneBaseModule
     @sightstone = sightstone
   end
 
-  def champions(, optional={})
+  def champions(optional={})
     region = optional[:region] || @sightstone.region
     free_to_play = optional[:free_to_play]
     uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.1/champion"

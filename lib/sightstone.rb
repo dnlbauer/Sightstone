@@ -6,6 +6,7 @@ require 'sightstone/modules/game_module'
 require 'sightstone/modules/league_module'
 require 'sightstone/modules/stats_module'
 require 'sightstone/modules/team_module'
+#require 'sightstone/modules/datadragon_module'
 
 # This is the main class of the Sightstone gem. All calls should be perfomrmed through this class.
 # @attr [String] region The default region

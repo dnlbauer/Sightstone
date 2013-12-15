@@ -8,8 +8,8 @@ class StatsModule < SightstoneBaseModule
     @sightstone = sightstone
   end
 
-  def summary(summoner, , optional={})
-    region = optional[:region] || @sightstone.region)
+  def summary(summoner, optional={})
+    region = optional[:region] || @sightstone.region
     season = optional[:season]
     
     id = if summoner.is_a? Summoner
