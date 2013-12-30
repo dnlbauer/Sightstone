@@ -8,7 +8,7 @@ class DatadragonModule < SightstoneBaseModule
 
   def version(optional={})
     region = optional[:region] || @sightstone.region
-    uri = "http://ddragon.leagueoflegends.com/realms/#{region}.json"
+    uri = "https://ddragon.leagueoflegends.com/realms/#{region}.json"
    
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
