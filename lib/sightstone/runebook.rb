@@ -1,3 +1,6 @@
+# Class to represent the runebook of a summoner
+# @attr [Numeric] summonerId id of the summoner
+# @attr [Array<RunePage>] pages of the runebook
 class RuneBook
   attr_accessor :pages, :summonerId
   
@@ -10,6 +13,11 @@ class RuneBook
   end
 end
 
+# Class to represent a page of a runebook
+# @attr [Numeric] id ID of the page
+# @attr [String] name page name
+# @attr [Boolean] current indicates if the page is selected
+# @attr [Hash<Numeric, Rune>] slots matches slot ids to the rune  
 class RunePage
   attr_accessor :id, :slots, :name, :current
   
@@ -25,6 +33,11 @@ class RunePage
 
 end
 
+# Class to represent a rune
+# @attr [Numeric] id ID of the rune
+# @attr [String] description description
+# @attr [String] name name of the rune
+# @attr [Numeric] tier rune tier (1,2,3)
 class Rune
   attr_accessor :id, :description, :name, :tier
   
