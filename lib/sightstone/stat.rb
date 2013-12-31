@@ -1,8 +1,7 @@
 class Stat
-  attr_accessor :id, :name, :value
+  attr_accessor :name, :value
   
   def initialize(data)
-    @id = data['id']
     @name = data['name']
     @value = if data.has_key? 'value'
       data['value']

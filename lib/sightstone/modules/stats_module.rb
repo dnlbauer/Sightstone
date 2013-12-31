@@ -3,11 +3,16 @@ require 'sightstone/summoner'
 require 'sightstone/player_stats_summary'
 require 'sightstone/ranked_stats'
 
+# Module to receive stats
 class StatsModule < SightstoneBaseModule
   def initialize(sightstone)
     @sightstone = sightstone
   end
 
+  # get a summary of stats for a summoner
+  # @param [Summoner, Fixnum] summoner summoner object of name
+  # @param optional [Hash] optional arguments: :region => replaces default region
+  # @ return [PlayerStatsSummaryList] of the summoner
   def summary(summoner, optional={})
     region = optional[:region] || @sightstone.region
     season = optional[:season]
@@ -17,7 +22,7 @@ class StatsModule < SightstoneBaseModule
     else
     summoner
     end
-    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.1/stats/by-summoner/#{id}/summary"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.2/stats/by-summoner/#{id}/summary"
     response = if season.nil?
       _get_api_response(uri)
     else
@@ -31,6 +36,10 @@ class StatsModule < SightstoneBaseModule
 
   end
   
+  # get a summary of stats for a summoner
+  # @param [Summoner, Fixnum] summoner summoner object of name
+  # @param optional [Hash] optional arguments: :region => replaces default region
+  # @ return [RankedStats] of the summoner
   def ranked(summoner, optional={})
     region = optional[:region] || @sightstone.region
     season = optional[:season]
@@ -39,7 +48,7 @@ class StatsModule < SightstoneBaseModule
     else
     summoner
     end
-    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.1/stats/by-summoner/#{id}/ranked"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.2/stats/by-summoner/#{id}/ranked"
     response = if season.nil?
       _get_api_response(uri)
     else
