@@ -28,6 +28,8 @@ class SightstoneBaseModule
       raise Sightstone::SightstoneConnectionException
     elsif response_code == 429
       raise Sightstone::RateLimitExceededException
+    elsif response_code == 401
+	raise Sightstone::InvalidApiKeyException
     else
       raise Sightstone::SightstoneApiException 'Unknown error occured'
     end

@@ -42,6 +42,9 @@ end
 # Base class for exceptions raised by the gem
 class SightstoneApiException < Exception; end
 
+# Raised if no or an invalid api key was passed to the api
+class InvalidApiKeyException < SightstoneApiException; end
+
 # Raised if the given developer cannot be found (api returns http error code 404)
 class SummonerNotFoundException < SightstoneApiException; end
 
