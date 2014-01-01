@@ -1,36 +1,36 @@
 Sightstone
 =======
 
-Sightstone is a ruby wrapper for riots league of legends developer api ([http://developer.riotgames.com](http://developer.riotgames.com)). Please not that you need an api key from riot in order to use this gem
+Sightstone is a ruby wrapper for riots league of legends developer api ([http://developer.riotgames.com](http://developer.riotgames.com)). Please note that you need an api key from riot in order to use this gem.
 
 
 Installation
 -------
-Just download the gem:
+Just install the gem:
 ```
 gem install sightstone
 ```
 
-If you want to build it by your on, build the gem and install it:
+If you want to build it by your own:
 ```
+git clone https://github.com/danijoo/Sightstone.git
 cd Sightstone
 gem build sightstone.gemspec
 gem install sightstone-x.x.x.gem
 ```
 
-Usage Examples
+Usage
 -------
-Sightstone is divided into several modules, each controlled by the base class 'Sightstone'. To use it, simply `require 'sightstone'`
+Sightstone is divided into several modules, each controlled by the base class 'Sightstone'. To use it, simply `require 'sightstone'`.
 
 Currently available modules are:
-  summoner (summoner, runes, masteries), game, league, stats, champion, teams
+  summoner, game, league, stats, champion, teams and ddragon
   
 Below are usage examples for 2 of the modules. You can review the code to get an idea about what is currently possible and what isnt. Especially the module classes under `sightstone/modules` should be interessting for that. Working on a wiki begins as soon as i bring myself to comment my code properly.
 
-### Summoner
-The summoner module handles all calls to the summoner api (summoner, runes, masteries)
+###Examples
 
-Examples:
+Lets find dyrus
 ```
 require 'sightstone'
 sightstone = Sightstone.new('your_api_key', 'na')
@@ -44,6 +44,7 @@ summoner.id
     => 5908
 ```
 
+.. and his rune pages
 ``` 
 require 'sightstone'
 sightstone = Sightstone.new('your_api_key', 'na')
@@ -62,34 +63,28 @@ page.slots[1]
     => => #<Rune:0x007fae98b55c40 @id=5245, @description="+0.95 attack damage", @name="Greater Mark of Attack Damage", @tier=3>
 ```
 
-### Game
-This module handles calls to the game api (used to receive summoners match history)
+Now things get tricky:
+Lets get all games where dyrus played tryndamere (champion id = 23) in a single call using code blocks:
 
-Example:
 ```
 require 'sightstone'
 sightstone = Sightstone.new('your_api_key', 'na')
+dyrus = sightstone.summoner.summoner("Dyrus")
 
-summoner dyrus = sightstone.summoner.summoner("Dyrus")
-history = sightstone.game.recent(dyrus)
+tryn_games = []
+sightstone.game.recent(dyrus) do |history|
+  history.games.each do |game|
+   tryn_games << game if game.championId == 23 # 23 stands for tryndamere 
+  end
+end
 
-history.games.size
-    => 10
-
-game = history.games[0]
-game.gameType
-    => "MATCHED_GAME"
-game.createDate
-    => 1386503866142
-game.statistics[1].name
-    => "GOLD_EARNED"
-game.statistics[1].value
-    => 7948
+tryn_games.size
+  => 2
 ```
 
-TODO
--------
-- Non-api calls to the datadragon
+A full documentation of the gem can be viewed at rdoc.info: http://rdoc.info/github/danijoo/Sightstone or build via yard from the source.
+Feel free to contact me if you need any help.
+
 
 License
 -------
