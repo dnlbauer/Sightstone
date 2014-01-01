@@ -31,6 +31,7 @@ Below are usage examples for 2 of the modules. You can review the code to get an
 ###Examples
 
 Lets find dyrus
+
 ```
 require 'sightstone'
 sightstone = Sightstone.new('your_api_key', 'na')
@@ -44,6 +45,7 @@ summoner.id
 ```
 
 .. and his rune pages
+
 ``` 
 require 'sightstone'
 sightstone = Sightstone.new('your_api_key', 'na')
