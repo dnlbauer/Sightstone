@@ -1,4 +1,3 @@
-require 'sightstone/stat'
 
 # match history of a summoner
 # @attr [Fixnum] summonerId ID of the summoner

@@ -1,4 +1,3 @@
-require 'sightstone/stat'
 # Ranked stats of a summoner
 # @attr [Fixnum] modifyDate date of last modification
 # @attr [Fixnum] summonerId id of the summoner

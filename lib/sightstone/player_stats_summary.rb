@@ -1,4 +1,3 @@
-require 'sightstone/stat'
 
 # summary of player statistic
 # @attr [Fixnum] summonerId ID of the summoner
