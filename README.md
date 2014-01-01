@@ -35,8 +35,7 @@ Lets find dyrus
 require 'sightstone'
 sightstone = Sightstone.new('your_api_key', 'na')
 
-# gets the summoner by its name OR id
-summoner = sightstone.summoner.summoner 'dyrus'
+summoner = sightstone.summoner.summoner 'dyrus' # gets the summoner by its name OR id
 
 summoner.name
     => "Dyrus"
@@ -49,8 +48,7 @@ summoner.id
 require 'sightstone'
 sightstone = Sightstone.new('your_api_key', 'na')
 
-# gets the runebook of the summoner or a summoners id    
-rune_book = sightstone.summoner.runes 5908
+rune_book = sightstone.summoner.runes 5908 # 5908 is the summoner ID, you can pass a summoner object, too!
 rune_book.pages.size
     => 20
     
