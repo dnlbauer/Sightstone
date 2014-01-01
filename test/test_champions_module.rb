@@ -6,7 +6,13 @@ require 'sightstone'
 class ChampionModuleTest < BaseTest
   
   def test_champions
-    champions = @@sightstone.champion.champions
+    begin
+      champions = @@sightstone.champion.champions
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     assert_instance_of(Array, champions)
     if(champions.size > 0)
       _check_champion(champions[0])
@@ -14,7 +20,13 @@ class ChampionModuleTest < BaseTest
   end
   
   def test_free_to_play
-    champions = @@sightstone.champion.champions :free_to_play => true
+    begin
+      champions = @@sightstone.champion.champions :free_to_play => true
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     champions.each do |champ|
       assert_equal(true, champ.freeToPlay)
     end

@@ -3,10 +3,14 @@ require 'sightstone'
 
 class StatsModuleTest < BaseTest
   
-  @@req_id = 30447079
-  
   def test_summary
-    summary = @@sightstone.stats.summary @@req_id
+    begin
+      summary = @@sightstone.stats.summary @@req_id
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     assert_instance_of(PlayerStatsSummaryList, summary)
     assert_instance_of(Fixnum, summary.summonerId)
     assert_instance_of(Array, summary.playerStatSummaries)
@@ -29,7 +33,13 @@ class StatsModuleTest < BaseTest
   end
   
   def test_ranked_stats
-    stats = @@sightstone.stats.ranked @@req_id
+    begin
+      stats = @@sightstone.stats.ranked @@req_id
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     assert_instance_of(Fixnum, stats.summonerId)
     assert_instance_of(Fixnum, stats.modifyDate)
     assert_instance_of(Hash, stats.champions)

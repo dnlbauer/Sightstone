@@ -4,10 +4,7 @@ require 'sightstone'
 
 
 class SummonerModuleTest < BaseTest
-  
-  @@test_name = "danijoo"
-  @@test_id_array = [30447079,30447079,30447079]
-  
+    
   def _check_summoner_validity(s)
     assert_instance_of(String, s.name)
     assert_instance_of(Fixnum, s.id)
@@ -17,17 +14,35 @@ class SummonerModuleTest < BaseTest
   end
   
   def test_summoner_by_name
+   begin
      s = @@sightstone.summoner.summoner(@@test_name)
+   rescue Sightstone::RateLimitExceededException
+     puts "Rate limit exeeded, waiting 1 sec"
+     sleep 1
+     retry
+   end
      _check_summoner_validity(s)
   end
   
   def test_summoner_by_id
-    s = @@sightstone.summoner.summoner(@@test_id_array[0])
+    begin
+      s = @@sightstone.summoner.summoner(@@test_id_array[0])
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     _check_summoner_validity(s)
   end
     
   def test_summoner_names
-    names = @@sightstone.summoner.names(@@test_id_array)
+    begin
+      names = @@sightstone.summoner.names(@@test_id_array)
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     assert_instance_of(Hash, names)
     @@test_id_array.each do |id|
       assert_equal(names.has_key?(id), true)
@@ -36,7 +51,13 @@ class SummonerModuleTest < BaseTest
   end  
   
   def test_summoner_runebook
-    runebook = @@sightstone.summoner.runes(@@test_id_array[0])
+    begin
+      runebook = @@sightstone.summoner.runes(@@test_id_array[0])
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     assert_equal(@@test_id_array[0], runebook.summonerId)
     assert_instance_of(Array, runebook.pages)
     if runebook.pages.size > 0
@@ -63,7 +84,13 @@ class SummonerModuleTest < BaseTest
   end
   
   def test_summoner_masterybook
-    masterybook = @@sightstone.summoner.masteries(@@test_id_array[0])
+    begin
+      masterybook = @@sightstone.summoner.masteries(@@test_id_array[0])
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     assert_equal(@@test_id_array[0], masterybook.summonerId)
     assert_instance_of(Array, masterybook.pages)
     if masterybook.pages.size > 0

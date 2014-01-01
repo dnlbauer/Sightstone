@@ -5,10 +5,14 @@ require 'sightstone'
 
 class GameModuleTest < BaseTest
   
-  @@req_id = 30447079
-  
   def test_recent_games
-    matchHistory = @@sightstone.game.recent(@@req_id)
+    begin
+      matchHistory = @@sightstone.game.recent(@@req_id)
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     assert_instance_of(MatchHistory, matchHistory)
     assert_instance_of(Fixnum, matchHistory.summonerId)
     assert_instance_of(Array, matchHistory.games)

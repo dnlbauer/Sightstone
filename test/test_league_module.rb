@@ -5,10 +5,14 @@ require 'sightstone'
 
 class LeagueModuleTest < BaseTest
   
-  @@req_id = 30447079
-  
   def test_league
-    leagues = @@sightstone.league.league(@@req_id)
+    begin
+      leagues = @@sightstone.league.league(@@req_id)
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
     leagues.each do |league|
       assert_instance_of(League, league)
       
