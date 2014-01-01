@@ -29,7 +29,11 @@ class LeagueModule < SightstoneBaseModule
       leagueKeys.each do |key|
         leagues << League.new(data[key])
       end
-      return leagues
+      if block_given?
+        yield leagues
+      else
+        return leagues
+      end
     }
   end
   

@@ -29,7 +29,11 @@ class TeamModule < SightstoneBaseModule
       data.each do |team|
         teams << Team.new(team)
       end
-      return teams
+      if block_given?
+        yield teams
+      else
+        return teams
+      end
     }
   end
 

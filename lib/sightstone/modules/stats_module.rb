@@ -31,7 +31,12 @@ class StatsModule < SightstoneBaseModule
 
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      return PlayerStatsSummaryList.new(data)
+      statList =  PlayerStatsSummaryList.new(data)
+      if block_given?
+        yield statList
+      else
+        return statList
+      end
     }
 
   end
@@ -57,7 +62,12 @@ class StatsModule < SightstoneBaseModule
 
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      return RankedStats.new(data)
+      stats =  RankedStats.new(data)
+      if block_given?
+        yield stats
+      else
+        return stats
+      end
     }
 
   end

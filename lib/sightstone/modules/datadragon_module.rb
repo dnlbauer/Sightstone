@@ -13,7 +13,11 @@ class DatadragonModule < SightstoneBaseModule
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      return data['v']
+      if block_given?
+        yield data['v']
+      else
+        return data['v']
+      end
     }
   end
   

@@ -25,7 +25,12 @@ class GameModule < SightstoneBaseModule
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      return MatchHistory.new(data)
+      history =  MatchHistory.new(data)
+      if block_given?
+        yield history
+      else
+        return history
+      end
     }
   end
   

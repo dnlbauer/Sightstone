@@ -23,7 +23,11 @@ class ChampionModule < SightstoneBaseModule
       data['champions'].each do |champ|
         champions << Champion.new(champ)
       end
-      return champions
+      if block_given?
+        yield champions
+      else
+        return champions
+      end
     }
   end
 end

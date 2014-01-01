@@ -26,7 +26,12 @@ class SummonerModule < SightstoneBaseModule
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      return Summoner.new(data)
+      s = Summoner.new(data)
+      if block_given?
+        yield s
+      else
+        return s
+      end
     }
   end
 
@@ -46,7 +51,11 @@ class SummonerModule < SightstoneBaseModule
       names_array.each do |summoner|
         names_hash[summoner['id']] = summoner['name']
       end
-      return names_hash
+      if block_given?
+        yield names_hash
+      else
+        return names_hash
+      end
     }
   end
 
@@ -65,7 +74,12 @@ class SummonerModule < SightstoneBaseModule
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      return RuneBook.new(data)
+      book = RuneBook.new(data)
+      if block_given?
+        yield book
+      else
+        return book
+      end
     }
   end
 
@@ -84,7 +98,12 @@ class SummonerModule < SightstoneBaseModule
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      return MasteryBook.new(data)
+      book =  MasteryBook.new(data)
+      if block_given?
+        yield book
+      else
+        return book
+      end
     }
   end
 end
