@@ -37,9 +37,11 @@ class HistoryGame
     @createDate=data['createDate']
     @createDateString=data['createDateString']
     @fellowPlayers=[]
+    if(data.has_key? "fellowPlayers")
     data['fellowPlayers'].each do |player|
       @fellowPlayers << Player.new(player)
     end
+  end
     @gameId=data['gameId']
     @gameMode=data['gameMode']
     @gameType=data['gameType']

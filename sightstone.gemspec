@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'sightstone'
-  s.version = '1.1.0'
-  s.date  = '2014-01-01'
+  s.version = '1.1.1'
+  s.date  = '2014-01-05'
   s.summary = 'Ruby wrapper for riots league of legends api'
   s.description = s.summary
   s.authors = ["Daniel Bauer"]
