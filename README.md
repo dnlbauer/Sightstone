@@ -34,7 +34,7 @@ Lets find dyrus
 
 ```
 require 'sightstone'
-sightstone = Sightstone.new('your_api_key', 'na')
+sightstone = Sightstone::Sightstone.new('your_api_key', 'na')
 
 summoner = sightstone.summoner.summoner 'dyrus' # gets the summoner by its name OR id
 
@@ -48,7 +48,7 @@ summoner.id
 
 ``` 
 require 'sightstone'
-sightstone = Sightstone.new('your_api_key', 'na')
+sightstone = Sightstone::Sightstone.new('your_api_key', 'na')
 
 rune_book = sightstone.summoner.runes 5908 # 5908 is the summoner ID, you can pass a summoner object, too!
 rune_book.pages.size
@@ -60,7 +60,7 @@ page.name
 page.current
     => false
 page.slots[1]
-    => => #<Rune:0x007fae98b55c40 @id=5245, @description="+0.95 attack damage", @name="Greater Mark of Attack Damage", @tier=3>
+    => => #<Sightstone::Rune:0x007fae98b55c40 @id=5245, @description="+0.95 attack damage", @name="Greater Mark of Attack Damage", @tier=3>
 ```
 
 Now things get tricky:
@@ -68,7 +68,7 @@ Lets get all games where dyrus played tryndamere (champion id = 23) in a single 
 
 ```
 require 'sightstone'
-sightstone = Sightstone.new('your_api_key', 'na')
+sightstone = Sightstone::Sightstone.new('your_api_key', 'na')
 dyrus = sightstone.summoner.summoner("Dyrus")
 
 tryn_games = []
