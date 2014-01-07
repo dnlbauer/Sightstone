@@ -33,7 +33,7 @@ class ChampionModuleTest < BaseTest
   end
   
   def _check_champion(champ)
-    assert_instance_of(Champion, champ)
+    assert_instance_of(Sightstone::Champion, champ)
     assert_instance_of(Fixnum, champ.attackRank)
     assert_instance_of(Fixnum, champ.defenseRank)
     assert_instance_of(String, champ.name)

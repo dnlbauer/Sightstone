@@ -1,3 +1,4 @@
+module Sightstone
 # Class to represent a champion
 # @attr [Boolean] active determines if champion is active
 # @attr [Integer] attackRank attack rank
@@ -27,4 +28,5 @@ class Champion
     @rankedPlayEnabled = data['rankedPlayEnabled']
   end
   
+end
 end

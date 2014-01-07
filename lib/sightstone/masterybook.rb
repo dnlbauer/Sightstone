@@ -1,3 +1,4 @@
+module Sightstone
 # Class to represent the masterybook of a summoner
 # @attr [Numeric] summonerId id of the summoner
 # @attr [Array<MasteryPage>] pages of the masterybook
@@ -45,4 +46,5 @@ class Talent
     @name = data['name']
     @rank = data['rank']
   end
+end
 end

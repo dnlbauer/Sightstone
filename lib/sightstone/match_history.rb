@@ -1,4 +1,4 @@
-
+module Sightstone
 # match history of a summoner
 # @attr [Fixnum] summonerId ID of the summoner
 # @attr [Array<HistoryGame>] games unsorted list of recently played games
@@ -89,4 +89,5 @@ class Stat
       data['count']
     end
   end
+end
 end

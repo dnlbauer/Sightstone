@@ -1,3 +1,4 @@
+module Sightstone
 # Class to represent a league
 # @attr [String] name name of the league
 # @attr [String] queue queue Type (can be: RANKED_SOLO_5x5, RANKED_TEAM_3x3, RANKED_TEAM_5x5)
@@ -68,4 +69,5 @@ class MiniSeries
     @progress = data['progress']
     @timeLeftToPlayMillis = data['timeLeftToPlayMillis']
   end
+end
 end

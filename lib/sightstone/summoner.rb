@@ -1,3 +1,4 @@
+module Sightstone
 # Class to represent a summoner
 # @attr [String] name name
 # @attr [Long] id summoner id (used for other calls)
@@ -18,4 +19,5 @@ class Summoner
   end
   
   
+end
 end

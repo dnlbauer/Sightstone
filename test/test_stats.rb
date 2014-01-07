@@ -11,7 +11,7 @@ class StatsModuleTest < BaseTest
       sleep 1
       retry
     end
-    assert_instance_of(PlayerStatsSummaryList, summary)
+    assert_instance_of(Sightstone::PlayerStatsSummaryList, summary)
     assert_instance_of(Fixnum, summary.summonerId)
     assert_instance_of(Array, summary.playerStatSummaries)
     summary.playerStatSummaries.each do |summary|
@@ -20,7 +20,7 @@ class StatsModuleTest < BaseTest
   end
   
   def _check_summary(sum)
-    assert_instance_of(PlayerStatSummary, sum)
+    assert_instance_of(Sightstone::PlayerStatSummary, sum)
     assert_instance_of(Fixnum, sum.wins)
     assert_instance_of(Fixnum, sum.losses)
     assert_instance_of(Fixnum, sum.modifyDate)

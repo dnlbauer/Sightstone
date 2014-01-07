@@ -1,8 +1,9 @@
+
 require 'sightstone/modules/sightstone_base_module'
 require 'sightstone/summoner'
 require 'sightstone/player_stats_summary'
 require 'sightstone/ranked_stats'
-
+module Sightstone
 # Module to receive stats
 class StatsModule < SightstoneBaseModule
   def initialize(sightstone)
@@ -71,4 +72,5 @@ class StatsModule < SightstoneBaseModule
     }
 
   end
+end
 end

@@ -1,6 +1,6 @@
 require 'sightstone/champion'
 require 'sightstone/modules/sightstone_base_module'
-
+module Sightstone
 # Module to provide calls to the summoner api
 class ChampionModule < SightstoneBaseModule
 
@@ -30,4 +30,5 @@ class ChampionModule < SightstoneBaseModule
       end
     }
   end
+end
 end

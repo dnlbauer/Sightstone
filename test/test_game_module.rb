@@ -13,7 +13,7 @@ class GameModuleTest < BaseTest
       sleep 1
       retry
     end
-    assert_instance_of(MatchHistory, matchHistory)
+    assert_instance_of(Sightstone::MatchHistory, matchHistory)
     assert_instance_of(Fixnum, matchHistory.summonerId)
     assert_instance_of(Array, matchHistory.games)
     matchHistory.games.each do |game|
@@ -22,7 +22,7 @@ class GameModuleTest < BaseTest
   end
   
   def _check_game(game)
-    assert_instance_of(HistoryGame, game)
+    assert_instance_of(Sightstone::HistoryGame, game)
     assert_instance_of(Fixnum, game.createDate)
     assert_instance_of(Fixnum, game.championId)
     assert_instance_of(Fixnum, game.gameId)
@@ -42,7 +42,7 @@ class GameModuleTest < BaseTest
   
   def _check_statistics(stats)
    stats.each do |stat|
-     assert_instance_of(Stat, stat)
+     assert_instance_of(Sightstone::Stat, stat)
      assert_instance_of(Fixnum, stat.value)
      assert_instance_of(Fixnum, stat.id)
      assert_instance_of(String, stat.name)
@@ -51,7 +51,7 @@ class GameModuleTest < BaseTest
   
   def _check_fellows(fellows)
     fellows.each do |fellow|
-      assert_instance_of(Player, fellow)
+      assert_instance_of(Sightstone::Player, fellow)
       assert_instance_of(Fixnum, fellow.championId)
       assert_instance_of(Fixnum, fellow.summonerId)
       assert_instance_of(Fixnum, fellow.teamId)

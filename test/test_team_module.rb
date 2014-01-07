@@ -18,10 +18,10 @@ class TeamModuleTest < BaseTest
   end
   
   def _check_team(team)
-    assert_instance_of(Team, team)
+    assert_instance_of(Sightstone::Team, team)
     assert_instance_of(String, team.status)
     assert_instance_of(String, team.tag)
-    assert_instance_of(Roster, team.roster)
+    assert_instance_of(Sightstone::Roster, team.roster)
     _check_roster(team.roster)
     assert_instance_of(Fixnum, team.lastGameDate)
     assert_instance_of(Fixnum, team.modifyDate)
@@ -42,7 +42,7 @@ class TeamModuleTest < BaseTest
     assert_instance_of(Fixnum, roster.ownerId)
     assert_instance_of(Array, roster.memberList)
     roster.memberList.each do |member|
-      assert_instance_of(Member, member)
+      assert_instance_of(Sightstone::Member, member)
       assert_instance_of(Fixnum, member.joinDate)
       assert_instance_of(Fixnum, member.inviteDate)
       assert_instance_of(Fixnum, member.playerId)
@@ -52,7 +52,7 @@ class TeamModuleTest < BaseTest
   
   def _check_history(history)
     history.each do |game|
-      assert_instance_of(TeamHistoryGame, game)
+      assert_instance_of(Sightstone::TeamHistoryGame, game)
       assert_instance_of(String, game.gameMode)
       assert_instance_of Fixnum, game.mapId
       assert_instance_of Fixnum, game.assists
@@ -68,7 +68,7 @@ class TeamModuleTest < BaseTest
   
   def _check_team_stats(stats)
     stats.each do |stat|
-      assert_instance_of(TeamStat, stat)
+      assert_instance_of(Sightstone::TeamStat, stat)
       assert_instance_of(Fixnum, stat.wins)
       assert_instance_of(Fixnum, stat.losses)
       assert_instance_of(Fixnum, stat.averageGamesPlayed)

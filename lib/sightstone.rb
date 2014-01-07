@@ -17,6 +17,8 @@ require 'sightstone/modules/datadragon_module'
 # @attr [LeagueModule] League module to call the leagues api
 # @attr [StatsModule] Stats module to call the stats api
 # @attr [TeamModule] Team module to call the team api
+module Sightstone
+
 class Sightstone
   
   attr_accessor :region
@@ -53,3 +55,6 @@ class SightstoneConnectionException < SightstoneApiException; end
 
 # Raised when the RateLimit has been exceeded (api returns http error code 429)
 class RateLimitExceededException < SightstoneApiException; end
+
+
+end

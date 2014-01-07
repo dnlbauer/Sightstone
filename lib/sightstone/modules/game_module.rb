@@ -1,7 +1,7 @@
 require 'sightstone/modules/sightstone_base_module'
 require 'sightstone/summoner'
 require 'sightstone/match_history'
-
+module Sightstone
 # module to access the game api
 class GameModule < SightstoneBaseModule
   
@@ -35,4 +35,5 @@ class GameModule < SightstoneBaseModule
   end
   
   
+end
 end

@@ -1,5 +1,5 @@
 require 'open-uri'
-
+module Sightstone
 # Base class of the api modules
 # @abstract
 class SightstoneBaseModule
@@ -23,16 +23,18 @@ class SightstoneBaseModule
     if response_code == 200
     block.call(response.body)
     elsif response_code == 404
-      raise Sightstone::SummonerNotFoundException
+      raise SummonerNotFoundException
     elsif response_code == 500
-      raise Sightstone::SightstoneConnectionException
+      raise SightstoneConnectionException
     elsif response_code == 429
-      raise Sightstone::RateLimitExceededException
+      raise RateLimitExceededException
     elsif response_code == 401
-	raise Sightstone::InvalidApiKeyException
+	raise InvalidApiKeyException
     else
-      raise Sightstone::SightstoneApiException 'Unknown error occured'
+      raise SightstoneApiException 'Unknown error occured'
     end
   end
   
+end
+
 end

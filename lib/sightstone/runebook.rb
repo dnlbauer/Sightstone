@@ -1,3 +1,4 @@
+module Sightstone
 # Class to represent the runebook of a summoner
 # @attr [Numeric] summonerId id of the summoner
 # @attr [Array<RunePage>] pages of the runebook
@@ -47,4 +48,5 @@ class Rune
     @name = data['name']
     @tier = data['tier']
   end
+end
 end

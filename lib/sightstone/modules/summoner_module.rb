@@ -4,6 +4,7 @@ require 'sightstone/masterybook'
 require 'sightstone/runebook'
 require 'open-uri'
 
+module Sightstone
 # Module to provide calls to the summoner api
 class SummonerModule < SightstoneBaseModule
   
@@ -106,4 +107,5 @@ class SummonerModule < SightstoneBaseModule
       end
     }
   end
+end
 end

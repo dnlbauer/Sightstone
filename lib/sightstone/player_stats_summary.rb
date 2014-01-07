@@ -1,4 +1,4 @@
-
+module Sightstone
 # summary of player statistic
 # @attr [Fixnum] summonerId ID of the summoner
 # @attr [Array<PlayerStatSummary] array of stat summaries for player with given id
@@ -35,4 +35,5 @@ class PlayerStatSummary
       @aggregatedStats[stat] = data['aggregatedStats'][stat]
     end
   end
+end
 end

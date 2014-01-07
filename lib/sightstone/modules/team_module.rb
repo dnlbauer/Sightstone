@@ -2,6 +2,7 @@ require 'sightstone/modules/sightstone_base_module'
 require 'sightstone/summoner'
 require 'sightstone/team'
 
+module Sightstone
 # module to make calls to the team api
 class TeamModule < SightstoneBaseModule
   def initialize(sightstone)
@@ -37,4 +38,5 @@ class TeamModule < SightstoneBaseModule
     }
   end
 
+end
 end

@@ -1,5 +1,5 @@
 require 'sightstone/modules/sightstone_base_module'
-
+module Sightstone
 class DatadragonModule < SightstoneBaseModule
 
   def initialize(sightstone)
@@ -22,4 +22,5 @@ class DatadragonModule < SightstoneBaseModule
   end
   
   
+end
 end

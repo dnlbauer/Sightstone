@@ -1,3 +1,4 @@
+module Sightstone
 # A Team
 # @attr [Fixnum] createDate UNIX timestamp of team creation
 # @attr [String] fullId id of the team
@@ -112,4 +113,5 @@ class TeamHistoryGame
     @win = data['win']
     @opposingTeamKills = data['opposingTeamKills']
   end
+end
 end

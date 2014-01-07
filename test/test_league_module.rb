@@ -14,7 +14,7 @@ class LeagueModuleTest < BaseTest
       retry
     end
     leagues.each do |league|
-      assert_instance_of(League, league)
+      assert_instance_of(Sightstone::League, league)
       
       # check the league entries
       _check_league(league)
@@ -32,7 +32,7 @@ class LeagueModuleTest < BaseTest
   end
   
   def _check_league_item(item)
-    assert_instance_of LeagueItem, item
+    assert_instance_of Sightstone::LeagueItem, item
     assert (item.isFreshBlood == true or item.isFreshBlood == false), "#{item.isFreshBlood} should be a boolean"
     assert (item.isHotStreak == true or item.isHotStreak == false), "#{item.isHotStreak} should be a boolean"
     assert (item.isInactive == true or item.isInactive == false), "#{item.isInactive} should be a boolean"
@@ -51,7 +51,7 @@ class LeagueModuleTest < BaseTest
   end
   
   def _check_miniseries(ms)
-    assert_instance_of MiniSeries, ms
+    assert_instance_of Sightstone::MiniSeries, ms
     assert_instance_of Fixnum, ms.losses
     assert_instance_of Fixnum, ms.wins
     assert_instance_of Fixnum, ms.target
