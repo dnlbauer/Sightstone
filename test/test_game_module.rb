@@ -35,17 +35,14 @@ class GameModuleTest < BaseTest
     assert_instance_of(String, game.subType)
     assert_instance_of(Fixnum, game.teamId)
     assert_instance_of(Array, game.fellowPlayers)
-    assert_instance_of(Array, game.statistics)
     _check_statistics(game.statistics)
     _check_fellows(game.fellowPlayers)
   end
   
   def _check_statistics(stats)
-   stats.each do |stat|
-     assert_instance_of(Sightstone::Stat, stat)
-     assert_instance_of(Fixnum, stat.value)
-     assert_instance_of(Fixnum, stat.id)
-     assert_instance_of(String, stat.name)
+    assert_instance_of(Hash, stats)
+   stats.each do |key, stat|
+     assert_instance_of(String, key)
    end
   end
   

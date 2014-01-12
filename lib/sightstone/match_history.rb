@@ -28,7 +28,7 @@ end
 # @attr [Fixnum] spell2 selected summoner spell no 2
 # @attr [String] subtype subtype
 # @attr [Fixnum] teamId ID of the team if there is a team associated to the game
-# @attr [Array<Stat>] statistics statistics of the game
+# @attr [Hash<String, Fixnum, Boolean>] statistics statistics of the game as a Hash: name -> value
 class HistoryGame
   attr_accessor :championId, :createDate, :fellowPlayers, :gameId, :gameMode, :gameType, :invalid, :level, :mapId, :spell1, :spell2, :statistics, :subType, :teamId
   
@@ -50,9 +50,9 @@ class HistoryGame
     @mapId=data['mapId']
     @spell1=data['spell1']
     @spell2=data['spell2']
-    @statistics = []
-    data['statistics'].each do |stat|
-      @statistics << Stat.new(stat)
+    @statistics = {}
+    data['stats'].each do |key, stat|
+      @statistics[key] = stat
     end
     @subType=data['subType']
     @teamId=data['teamId']
@@ -73,21 +73,4 @@ class Player
   end
 end
 
-# statistical value of a game
-# @attr [Fixnum] id ID of the statistical value
-# @attr [String] mame name of the statistical value (example: MINIONS_KILLED)
-# @attr [Fixnum] value value
-class Stat
-  attr_accessor :id, :name, :value
-  
-  def initialize(data)
-    @name = data['name']
-    @id = data['id']
-    @value = if data.has_key? 'value'
-      data['value']
-    else
-      data['count']
-    end
-  end
-end
 end

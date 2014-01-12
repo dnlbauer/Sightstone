@@ -20,7 +20,7 @@ class GameModule < SightstoneBaseModule
    else
      summoner
    end
-   uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.2/game/by-summoner/#{id}/recent"
+   uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.3/game/by-summoner/#{id}/recent"
    
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
