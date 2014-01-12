@@ -22,7 +22,6 @@ class StatsModuleTest < BaseTest
   def _check_summary(sum)
     assert_instance_of(Sightstone::PlayerStatSummary, sum)
     assert_instance_of(Fixnum, sum.wins)
-    assert_instance_of(Fixnum, sum.losses)
     assert_instance_of(Fixnum, sum.modifyDate)
     assert_instance_of(String, sum.playerStatSummaryType)
     assert_instance_of(Hash, sum.aggregatedStats)
