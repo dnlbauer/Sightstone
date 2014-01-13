@@ -1,5 +1,5 @@
 require 'rest_client'
-require 'JSON'
+require 'json'
 require 'sightstone/modules/champion_module'
 require 'sightstone/modules/summoner_module'
 require 'sightstone/modules/game_module'
