@@ -29,9 +29,9 @@ class SightstoneBaseModule
     elsif response_code == 429
       raise RateLimitExceededException
     elsif response_code == 401
-	raise InvalidApiKeyException
+	    raise InvalidApiKeyException
     else
-      raise SightstoneApiException 'Unknown error occured'
+      raise SightstoneApiException
     end
   end
   
