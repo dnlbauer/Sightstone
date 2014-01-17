@@ -162,6 +162,40 @@ class SummonerModuleTest < BaseTest
       end
     end
   end
+
+  def test_summoner_masterybooks
+    begin
+      masterybooks = @@sightstone.summoner.masterybooks(@@test_id_array)
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
+    masterybooks.each do |id, masterybook|
+      assert_equal(@@test_id_array[0], masterybook.summonerId)
+    assert_instance_of(Array, masterybook.pages)
+    if masterybook.pages.size > 0
+      # test a page
+      page = masterybook.pages[0]
+      if(page.current == true || page.current == false)
+        assert_equal(true, true)
+      else
+        assert_equal(page.current, "asd")
+      end
+      assert_instance_of(Fixnum, page.id)
+      assert_instance_of(String, page.name)
+      assert_instance_of(Array, page.talents)
+      
+      if(page.talents.size > 0)
+        # test talent
+        talent = page.talents[0]
+        assert_instance_of(Fixnum, talent.rank)
+        assert_instance_of(String, talent.name)
+        assert_instance_of(Fixnum, talent.id)
+      end
+    end
+    end
+  end
   
 
 end

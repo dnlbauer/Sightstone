@@ -158,15 +158,46 @@ class SummonerModule < SightstoneBaseModule
     else
       summoner
     end
-    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.2/summoner/#{id}/masteries"
+    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{id}/masteries"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      book =  MasteryBook.new(data)
+      book =  MasteryBook.new(data.values[0])
       if block_given?
         yield book
       else
         return book
+      end
+    }
+  end
+
+  # returns the masterybooks for multiple summoners
+  # @param summoners [Array<(Summoner, Integer)>] list of summoner objects or ids of summoners
+  # @param optional [Hash<Symbol, String>] optional arguments: :region => replaces default region
+  # @return [Hash<Integer, Masterybook>] A hash mapping masterybooks to the ids of summoners
+  def masterybooks(summoners, optional={})
+    return {} if summoners.empty?
+    region = optional[:region] || @sightstone.region
+    ids = summoners.collect { |summoner|
+      if summoner.is_a? Summoner
+        summoner.id
+      else
+        summoner
+      end
+    }
+
+    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{ids.join(',')}/masteries"
+    response = _get_api_response(uri)
+    _parse_response(response) { |resp|
+      data = JSON.parse(resp)
+      books = {}
+      data.each do |key, raw_book|
+        books[key] = MasteryBook.new(raw_book)
+      end
+      if block_given?
+        yield books
+      else
+        return books
       end
     }
   end
