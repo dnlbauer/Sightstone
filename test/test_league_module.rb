@@ -7,7 +7,7 @@ class LeagueModuleTest < BaseTest
   
   def test_league
     begin
-      leagues = @@sightstone.league.league(@@req_id)
+      leagues = @@sightstone.league.leagues(@@req_id)
     rescue Sightstone::RateLimitExceededException
       puts "Rate limit exeeded, waiting 1 sec"
       sleep 1

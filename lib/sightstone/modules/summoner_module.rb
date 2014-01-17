@@ -64,7 +64,7 @@ class SummonerModule < SightstoneBaseModule
   # @param summoner [Summoner, id] summoner object or id of a summoner
   # @param optional [Hash<Symbol, String>] optional arguments: :region => replaces default region
   # @return [Runebook] runebook of the summoner
-  def runes(summoner, optional={})
+  def runebook(summoner, optional={})
     region = optional[:region] || @sightstone.region
     id = if summoner.is_a? Summoner
       summoner.id
@@ -88,7 +88,7 @@ class SummonerModule < SightstoneBaseModule
   # @param summoner [Summoner, id] summoner object or id of a summoner
   # @param optional [Hash<Symbol, String>] optional arguments: :region => replaces default region
   # @return [Masterybook] masterybook of the summoner
-  def masteries(summoner, optional={})
+  def masterybook(summoner, optional={})
     region = optional[:region] || @sightstone.region
      id = if summoner.is_a? Summoner
       summoner.id

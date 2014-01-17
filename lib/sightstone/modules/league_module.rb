@@ -13,7 +13,7 @@ class LeagueModule < SightstoneBaseModule
   # @param [Summoner, Integer] summoner
   # @param optional [Hash] optional arguments: :region => replaces default region
   # @return [Array<League>] an array of all leagues the summoner and his teams are in
-  def league(summoner, optional={})
+  def leagues(summoner, optional={})
     region = optional[:region] || @sightstone.region
     id = if summoner.is_a? Summoner
       summoner.id

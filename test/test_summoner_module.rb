@@ -52,7 +52,7 @@ class SummonerModuleTest < BaseTest
   
   def test_summoner_runebook
     begin
-      runebook = @@sightstone.summoner.runes(@@test_id_array[0])
+      runebook = @@sightstone.summoner.runebook(@@test_id_array[0])
     rescue Sightstone::RateLimitExceededException
       puts "Rate limit exeeded, waiting 1 sec"
       sleep 1
@@ -85,7 +85,7 @@ class SummonerModuleTest < BaseTest
   
   def test_summoner_masterybook
     begin
-      masterybook = @@sightstone.summoner.masteries(@@test_id_array[0])
+      masterybook = @@sightstone.summoner.masterybook(@@test_id_array[0])
     rescue Sightstone::RateLimitExceededException
       puts "Rate limit exeeded, waiting 1 sec"
       sleep 1
