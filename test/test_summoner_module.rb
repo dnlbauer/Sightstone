@@ -95,6 +95,41 @@ class SummonerModuleTest < BaseTest
       end
     end
   end
+
+  def test_summoner_runebooks
+    begin
+      runebooks = @@sightstone.summoner.runebooks(@@test_id_array)
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
+    runebooks.each do |key, runebook|
+    assert_equal(@@test_id_array[0], runebook.summonerId)
+    assert_instance_of(Array, runebook.pages)
+    if runebook.pages.size > 0
+      # test a page
+      page = runebook.pages[0]
+      if(page.current == true || page.current == false)
+        assert_equal(true, true)
+      else
+        assert_equal(page.current, "asd")
+      end
+      assert_instance_of(Fixnum, page.id)
+      assert_instance_of(String, page.name)
+      assert_instance_of(Hash, page.slots)
+      
+      if(page.slots.keys.size > 0)
+        # test rune
+        rune = page.slots[page.slots.keys[0]]
+        assert_instance_of(String, rune.description)
+        assert_instance_of(String, rune.name)
+        assert_instance_of(Fixnum, rune.tier)
+        assert_instance_of(Fixnum, rune.id)
+      end
+    end
+    end
+  end
   
   def test_summoner_masterybook
     begin
