@@ -19,15 +19,15 @@ class SummonerModule < SightstoneBaseModule
   def summoner(name_or_id, optional={})
     region = optional[:region] || @sightstone.region
     uri = if name_or_id.is_a? Integer
-      "https://prod.api.pvp.net/api/lol/#{region}/v1.2/summoner/#{name_or_id}"
+      "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{name_or_id}"
     else
-      "https://prod.api.pvp.net/api/lol/#{region}/v1.2/summoner/by-name/#{URI::encode(name_or_id)}"
+      "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/by-name/#{URI::encode(name_or_id)}"
     end
     
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      s = Summoner.new(data)
+      s = Summoner.new(data.values[0])
       if block_given?
         yield s
       else
@@ -35,6 +35,38 @@ class SummonerModule < SightstoneBaseModule
       end
     }
   end
+
+  # returns an array of summoner objects
+  # @param names_or_ids [Array<Integer, String>] names or ids of summoners
+  # @param optional [Hash] optional arguments: :region => replaces default region
+  # @return [Hash<(String or Integer), Summoner>] A Hash mapping summoner ids or names to summoner objects
+  def summoners(names_or_ids, optional={})
+    return {} if names_or_ids.empty?
+
+    region = optional[:region] || @sightstone.region
+    
+    uri = if !names_or_ids[0].is_a? String
+      "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{names_or_ids.join(',')}"
+    else
+      "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/by-name/#{URI::encode(names_or_ids.join(','))}"
+    end
+    
+    response = _get_api_response(uri)
+    _parse_response(response) { |resp|
+      data = JSON.parse(resp)
+      summoners = {}
+      data.each do |id_or_name, raw_summoner|
+        summoners[id_or_name] = Summoner.new(raw_summoner)
+      end
+
+      if block_given?
+        yield summoners
+      else
+        return summoners
+      end
+    }
+  end
+
 
   # returns the names for the ids
   # @param ids [Array<Numeric>] ids
