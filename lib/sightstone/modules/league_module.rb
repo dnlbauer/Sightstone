@@ -21,14 +21,13 @@ class LeagueModule < SightstoneBaseModule
       summoner
     end
     
-    uri = "https://prod.api.pvp.net/api/lol/#{region}/v2.2/league/by-summoner/#{id}"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v2.3/league/by-summoner/#{id}"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      leagueKeys = data.keys
       leagues = []
-      leagueKeys.each do |key|
-        leagues << League.new(data[key])
+      data.each do |league|
+        leagues << League.new(league)
       end
       if block_given?
         yield leagues

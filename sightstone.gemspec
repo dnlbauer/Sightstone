@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'sightstone'
-  s.version = '1.4.0'
+  s.version = '1.4.1'
   s.date  = '2014-01-17'
   s.summary = 'Ruby wrapper for riots league of legends api'
   s.description = s.summary
