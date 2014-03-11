@@ -13,10 +13,13 @@ class SummonerModuleTest < BaseTest
     assert_instance_of(Fixnum, s.level)
   end
   
-  def test_summoners_by_names
+  def test_multiple_summoners_by_names
    begin
      s = @@sightstone.summoner.summoners([@@test_name, @@test_name2])
-     s.each { |name, summoner| _check_summoner_validity(summoner) }
+     s.each do |name, summoner|
+        _check_summoner_validity(summoner)
+        assert_equal name.downcase, summoner.name.downcase
+     end
    rescue Sightstone::RateLimitExceededException
      puts "Rate limit exeeded, waiting 1 sec"
      sleep 1
