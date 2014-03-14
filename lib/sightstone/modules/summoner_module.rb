@@ -75,14 +75,14 @@ class SummonerModule < SightstoneBaseModule
   def names(ids, optional={})
     region = optional[:region] || @sightstone.region
     ids = ids.join(',')
-    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.2/summoner/#{ids}/name"
+    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{ids}/name"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
-      names_array = data['summoners']
+
       names_hash = Hash.new
-      names_array.each do |summoner|
-        names_hash[summoner['id']] = summoner['name']
+      data.each do |id, name|
+        names_hash[id.to_i] = name
       end
       if block_given?
         yield names_hash
