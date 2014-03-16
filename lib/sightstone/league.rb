@@ -5,12 +5,13 @@ module Sightstone
 # @attr [String] tier tier of the requestet summoner (can be: CHALLENGER, DIAMOND, PLATINUM, GOLD, SILVER, BRONZE)
 # @attr [Array<LeagueItem>] entries  
 class League
-  attr_accessor :entries, :name, :queue, :tier
+  attr_accessor :entries, :name, :queue, :tier, :participantId
   
   def initialize(data)
     @name = data['name']
     @queue = data['queue']
     @tier = data['tier']
+    @participantId = data['participantId']
     @entries = []
     data['entries'].each do |entry|
       @entries << LeagueItem.new(entry)
