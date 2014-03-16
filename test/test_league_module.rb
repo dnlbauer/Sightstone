@@ -26,6 +26,7 @@ class LeagueModuleTest < BaseTest
     assert_instance_of String, league.queue
     assert_instance_of String, league.tier
     assert_instance_of Array, league.entries
+    assert_instance_of String, league.participantId
     league.entries.each do |entry|
       _check_league_item entry
     end
