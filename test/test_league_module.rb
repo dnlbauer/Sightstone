@@ -20,6 +20,22 @@ class LeagueModuleTest < BaseTest
       _check_league(league)
     end
   end
+
+  def test_entry
+    begin
+      entries = @@sightstone.league.league_entries(@@req_id)
+    rescue Sightstone::RateLimitExceededException
+      puts "Rate limit exeeded, waiting 1 sec"
+      sleep 1
+      retry
+    end
+    entries.each do |entry|
+      assert_instance_of(Sightstone::LeagueItem, entry)
+      
+      # check the league entries
+      _check_league_item(entry)
+    end
+  end
   
   def _check_league(league)
     assert_instance_of String, league.name

@@ -36,6 +36,34 @@ class LeagueModule < SightstoneBaseModule
       end
     }
   end
+
+  # Get all entries for the given summoner
+  # @param [Summoner, Integer] summoner or summoner id
+  # @param optional [Hash] optional arguments: :region => replaces default region
+  # @return [Array<LeagueItem>] an array of all entries for that given summoner
+  def league_entries(summoner, optional={})
+    region = optional[:region] || @sightstone.region
+    id = if summoner.is_a? Summoner
+      summoner.id
+    else
+      summoner
+    end
+    
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v2.3/league/by-summoner/#{id}/entry"
+    response = _get_api_response(uri)
+    _parse_response(response) { |resp|
+      data = JSON.parse(resp)
+      entries = []
+      data.each do |entry|
+        entries << LeagueItem.new(entry)
+      end
+      if block_given?
+        yield entries
+      else
+        return entries
+      end
+    }
+  end
   
 end
 end
