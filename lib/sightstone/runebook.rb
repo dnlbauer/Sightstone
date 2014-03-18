@@ -8,8 +8,10 @@ class RuneBook
   def initialize(data)
     @summonerId = data['summonerId']
     @pages = []
-    data['pages'].each do |page|
-      @pages << RunePage.new(page)
+    if(data.has_key? 'pages')
+      data['pages'].each do |page|
+        @pages << RunePage.new(page)
+      end
     end
   end
 end
@@ -27,8 +29,10 @@ class RunePage
     @name = data['name']
     @current = data['current']
     @slots = {}
-    data['slots'].each do |slot|
-      @slots[slot['runeSlotId']] = Rune.new(slot['rune'])
+    if(data.has_key? 'slots')
+      data['slots'].each do |slot|
+        @slots[slot['runeSlotId']] = Rune.new(slot['rune'])
+      end
     end
   end
 

@@ -8,8 +8,10 @@ class MasteryBook
   def initialize(data)
     @summonerId = data['summonerId']
     @pages = []
-    data['pages'].each do |page|
-      @pages << MasteryPage.new(page)
+    if(data.has_key? 'pages')
+      data['pages'].each do |page|
+        @pages << MasteryPage.new(page)
+      end
     end
   end
 end
@@ -27,8 +29,10 @@ class MasteryPage
     @name = data['name']
     @current = data['current']
     @talents = []
-    data['talents'].each do |talent|
-      @talents << Talent.new(talent)
+    if(data.has_key? 'talents')
+      data['talents'].each do |talent|
+        @talents << Talent.new(talent)
+      end
     end
   end
 
