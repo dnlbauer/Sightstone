@@ -9,5 +9,7 @@ Gem::Specification.new do |s|
   s.files = Dir["lib/**/*"]
   s.homepage = 'https://github.com/danijoo/Sightstone'
   s.license = 'MIT'
+
   s.add_runtime_dependency 'rest-client'
+  s.add_development_dependency 'rake'
 end
