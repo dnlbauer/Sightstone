@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/danijoo/Sightstone.svg?branch=master)](https://travis-ci.org/danijoo/Sightstone)
 [![Gem Version](https://badge.fury.io/rb/sightstone.png)](http://badge.fury.io/rb/sightstone)
 [![Dependency Status](https://gemnasium.com/danijoo/Sightstone.svg)](https://gemnasium.com/danijoo/Sightstone)
 
