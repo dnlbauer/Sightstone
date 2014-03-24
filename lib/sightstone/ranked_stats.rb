@@ -10,13 +10,27 @@ class RankedStats
     @summonerId = data['summonerId']
     @modifyDate = data['modifyDate']
     @champions = {}
+    @names = {}
     
     data['champions'].each do |champ|
       id = champ['id']
-      @champions[id] = Hash.new unless @champions.has_key? id
+      if(!@champions.has_key?(id))
+        @champions[id] = Hash.new
+        @names[champ['name']] = id
+      end 
+
       stat_keys = champ['stats'].keys
       stat_keys.each do |key|
         @champions[id][key] = champ['stats'][key]
+      end
+    end
+
+    # returns the statistics of a champion by its normailized name
+    # @param name [String] normalized name or Combined
+    # @return [Hash<String, Fixnum>] A Hash mapping statistic names to their values
+    def get_statistics_by_name(name)
+      if(@names.has_key? name)
+        @champions[@names[name]]
       end
     end
   end
