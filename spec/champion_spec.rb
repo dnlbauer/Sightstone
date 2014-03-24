@@ -5,10 +5,10 @@ module Sightstone
 	describe Champion do
 
 		before :all do
-			json = JSON.parse('{"botMmEnabled": false,"defenseRank": 4,"attackRank": 8,"id": 266,
+			response_mockup = JSON.parse('{"botMmEnabled": false,"defenseRank": 4,"attackRank": 8,"id": 266,
       								"rankedPlayEnabled": true,"name": "Aatrox","botEnabled": false,"difficultyRank": 6,
       								"active": true,"freeToPlay": false,"magicRank": 3}')
-			@c = Champion.new(json)
+			@c = Champion.new(response_mockup)
 		end
 
 		describe "#new" do

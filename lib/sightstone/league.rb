@@ -3,6 +3,7 @@ module Sightstone
 # @attr [String] name name of the league
 # @attr [String] queue queue Type (can be: RANKED_SOLO_5x5, RANKED_TEAM_3x3, RANKED_TEAM_5x5)
 # @attr [String] tier tier of the requestet summoner (can be: CHALLENGER, DIAMOND, PLATINUM, GOLD, SILVER, BRONZE)
+# @attr [String] participantId id of the requested summoner or team
 # @attr [Array<LeagueItem>] entries  
 class League
   attr_accessor :entries, :name, :queue, :tier, :participantId
@@ -23,11 +24,11 @@ end
 # @attr [Boolean] isFreshBlood determines if summoner is new in the league
 # @attr [Boolean] isHotStreak hotStreak = 3 games won in a row
 # @attr [Boolean] isInactive true if summoner is inactive
-# @attr [Boolean] isVetern true if veteran
+# @attr [Boolean] isVeteran true if veteran
 # @attr [Fixnum] lastPlayed timestamp of last played game
 # @attr [String] leagueName name of the league
 # @attr [Fixnum] leaguePoints leaguePoints
-# @attr [MiniSeries, nil] nil if player has no miniseries, a miniseries object if he is in one
+# @attr [MiniSeries] miniSeries a miniseries object if he is in one
 # @attr [String] playerOrTeamId id of the player or team as a string
 # @attr [String] playerOrTeamName name of the player/team
 # @attr [String] queueType type of the queue
@@ -60,7 +61,7 @@ end
 # @attr [Fixnum] wins number of won games of the series
 # @attr [Fixnum] target number of required wins to win the series
 # @attr [Fixnum] timeLeftToPlayMillis time left to complete the series
-# @attr [String] win/loose history as a string. Each character shows a (W)in, (L)oss or (N)ot played
+# @attr [String] progress win/loose history as a string. Each character shows a (W)in, (L)oss or (N)ot played
 class MiniSeries
   attr_accessor :losses, :wins, :target, :progress, :timeLeftToPlayMillis
   def initialize(data)
