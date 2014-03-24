@@ -26,7 +26,7 @@ end
 # @attr [Fixnum] mapId ID of the played map
 # @attr [Fixnum] spell1 selected summoner spell no 1
 # @attr [Fixnum] spell2 selected summoner spell no 2
-# @attr [String] subtype subtype
+# @attr [String] subType subtype
 # @attr [Fixnum] teamId ID of the team if there is a team associated to the game
 # @attr [Hash<String, Fixnum, Boolean>] statistics statistics of the game as a Hash: name -> value
 class HistoryGame
@@ -62,7 +62,7 @@ end
 # player of a game
 # @attr [Fixnum] championId ID of played Champion
 # @attr [Fixnum] summonerId ID of the summoner
-# @attr [Fixnum] teammId ID of the team
+# @attr [Fixnum] teamId ID of the team
 class Player
   attr_accessor :championId, :summonerId, :teamId
   
