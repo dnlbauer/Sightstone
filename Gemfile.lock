@@ -7,6 +7,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.3.6)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     mime-types (2.2)
     rake (10.1.1)
@@ -20,6 +23,10 @@ GEM
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.6)
+    safe_yaml (1.0.1)
+    webmock (1.17.4)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -29,3 +36,4 @@ DEPENDENCIES
   rake
   rspec
   sightstone!
+  webmock

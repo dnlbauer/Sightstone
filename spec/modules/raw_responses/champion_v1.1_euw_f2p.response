@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=UTF-8
+Date: Tue, 25 Mar 2014 09:57:23 GMT
+Server: Jetty(9.1.1.v20140108)
+Vary: Accept-Encoding, User-Agent
+Content-Length: 1878
+Connection: keep-alive
+
+{"champions":[{"id":84,"name":"Akali","active":true,"attackRank":5,"defenseRank":3,"magicRank":8,"difficultyRank":6,"botEnabled":false,"freeToPlay":true,"botMmEnabled":false,"rankedPlayEnabled":true},{"id":59,"name":"JarvanIV","active":true,"attackRank":6,"defenseRank":8,"magicRank":3,"difficultyRank":5,"botEnabled":false,"freeToPlay":true,"botMmEnabled":true,"rankedPlayEnabled":true},{"id":21,"name":"MissFortune","active":true,"attackRank":8,"defenseRank":2,"magicRank":5,"difficultyRank":3,"botEnabled":true,"freeToPlay":true,"botMmEnabled":true,"rankedPlayEnabled":true},{"id":15,"name":"Sivir","active":true,"attackRank":9,"defenseRank":3,"magicRank":1,"difficultyRank":3,"botEnabled":true,"freeToPlay":true,"botMmEnabled":true,"rankedPlayEnabled":true},{"id":37,"name":"Sona","active":true,"attackRank":5,"defenseRank":2,"magicRank":8,"difficultyRank":1,"botEnabled":true,"freeToPlay":true,"botMmEnabled":true,"rankedPlayEnabled":true},{"id":16,"name":"Soraka","active":true,"attackRank":2,"defenseRank":5,"magicRank":7,"difficultyRank":3,"botEnabled":true,"freeToPlay":true,"botMmEnabled":true,"rankedPlayEnabled":true},{"id":17,"name":"Teemo","active":true,"attackRank":5,"defenseRank":3,"magicRank":7,"difficultyRank":4,"botEnabled":false,"freeToPlay":true,"botMmEnabled":false,"rankedPlayEnabled":true},{"id":101,"name":"Xerath","active":true,"attackRank":1,"defenseRank":3,"magicRank":10,"difficultyRank":6,"botEnabled":false,"freeToPlay":true,"botMmEnabled":false,"rankedPlayEnabled":true},{"id":5,"name":"XinZhao","active":true,"attackRank":8,"defenseRank":6,"magicRank":3,"difficultyRank":3,"botEnabled":true,"freeToPlay":true,"botMmEnabled":true,"rankedPlayEnabled":true},{"id":157,"name":"Yasuo","active":true,"attackRank":8,"defenseRank":4,"magicRank":4,"difficultyRank":8,"botEnabled":false,"freeToPlay":true,"botMmEnabled":false,"rankedPlayEnabled":true}]}
