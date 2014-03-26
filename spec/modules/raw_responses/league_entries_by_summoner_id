@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 26 Mar 2014 08:43:26 GMT
+Server: Jetty(9.1.1.v20140108)
+Content-Length: 983
+Connection: keep-alive
+
+[{"playerOrTeamId":"TEAM-b8dbeb70-83b0-11e3-b41c-782bcb497d6f","playerOrTeamName":"H Fettarme Vollmilch","leagueName":"Heimerdinger's Archons","queueType":"RANKED_TEAM_3x3","tier":"BRONZE","rank":"I","leaguePoints":75,"wins":4,"isHotStreak":false,"isVeteran":false,"isFreshBlood":false,"isInactive":true,"lastPlayed":-1},{"playerOrTeamId":"30447079","playerOrTeamName":"danijoo","leagueName":"Elise's Horde","queueType":"RANKED_SOLO_5x5","tier":"SILVER","rank":"II","leaguePoints":0,"wins":57,"isHotStreak":false,"isVeteran":true,"isFreshBlood":false,"isInactive":false,"lastPlayed":-1},{"playerOrTeamId":"TEAM-ffbaccc0-b8c0-11e2-b67a-782bcb497d6f","playerOrTeamName":"EloStechers","leagueName":"Kayle's Patriots","queueType":"RANKED_TEAM_3x3","tier":"BRONZE","rank":"II","leaguePoints":100,"wins":9,"isHotStreak":true,"isVeteran":false,"isFreshBlood":false,"isInactive":false,"miniSeries":{"target":2,"wins":1,"losses":0,"timeLeftToPlayMillis":-1,"progress":"WNN"},"lastPlayed":-1}]
