@@ -75,7 +75,7 @@ class SummonerModule < SightstoneBaseModule
   def names(ids, optional={})
     region = optional[:region] || @sightstone.region
     ids = ids.join(',')
-    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{ids}/name"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{ids}/name"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
@@ -103,7 +103,7 @@ class SummonerModule < SightstoneBaseModule
     else
       summoner
     end
-    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{id}/runes"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{id}/runes"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
@@ -131,7 +131,7 @@ class SummonerModule < SightstoneBaseModule
         summoner
       end
     }
-    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{ids.join(',')}/runes"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{ids.join(',')}/runes"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
@@ -158,7 +158,7 @@ class SummonerModule < SightstoneBaseModule
     else
       summoner
     end
-    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{id}/masteries"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{id}/masteries"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
@@ -186,7 +186,7 @@ class SummonerModule < SightstoneBaseModule
       end
     }
 
-    uri = "http://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{ids.join(',')}/masteries"
+    uri = "https://prod.api.pvp.net/api/lol/#{region}/v1.3/summoner/#{ids.join(',')}/masteries"
     response = _get_api_response(uri)
     _parse_response(response) { |resp|
       data = JSON.parse(resp)
