@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 26 Mar 2014 09:53:17 GMT
+Server: Jetty(9.1.1.v20140108)
+Vary: Accept-Encoding, User-Agent
+Content-Length: 233
+Connection: keep-alive
+
+{"danijoo":{"id":30447079,"name":"danijoo","profileIconId":551,"summonerLevel":30,"revisionDate":1395768855000},"ismirknuelle":{"id":22151489,"name":"ismirknuelle","profileIconId":583,"summonerLevel":30,"revisionDate":1395768855000}}

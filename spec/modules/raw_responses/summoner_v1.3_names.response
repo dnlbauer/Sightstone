@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 26 Mar 2014 09:49:05 GMT
+Server: Jetty(9.1.1.v20140108)
+Vary: Accept-Encoding, User-Agent
+Content-Length: 41
+Connection: keep-alive
+
+{"30492244":"Pippu","30447079":"danijoo"}
