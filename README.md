@@ -9,6 +9,11 @@ Sightstone
 Sightstone is a ruby wrapper for riots league of legends developer api ([http://developer.riotgames.com](http://developer.riotgames.com)). Please note that you need an api key from riot in order to use this gem.
 
 
+Discontinued
+-------
+This project isn't under development anymore!
+
+
 Installation
 -------
 Just install the gem:
