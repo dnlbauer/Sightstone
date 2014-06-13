@@ -4,7 +4,7 @@ Sightstone
 [![Gem Version](https://badge.fury.io/rb/sightstone.png)](http://badge.fury.io/rb/sightstone)
 [![Dependency Status](https://gemnasium.com/danijoo/Sightstone.svg)](https://gemnasium.com/danijoo/Sightstone)
 [![Code Climate](https://codeclimate.com/github/danijoo/Sightstone.png)](https://codeclimate.com/github/danijoo/Sightstone)
-[![Inline docs](http://inch-pages.github.io/github/danijoo/Sightstone.svg)](http://inch-pages.github.io/github/danijoo/Sightstone)
+[![Inline docs](http://inch-ci.org/github/danijoo/Sightstone.svg)](http://inch-ci.org/github/danijoo/Sightstone)
 
 Sightstone is a ruby wrapper for riots league of legends developer api ([http://developer.riotgames.com](http://developer.riotgames.com)). Please note that you need an api key from riot in order to use this gem.
 
